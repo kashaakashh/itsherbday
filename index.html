@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Happy 2 Years, Monica ❤️ Chandler</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Dancing+Script:wght@600&family=Poppins:wght@400;600&display=swap"
+    rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet" />
+</head>
+
+<body>
+
+  <!-- ================= PASSWORD GATE ================= -->
+  <div id="gate" class="gate">
+    <div class="gate-content">
+      <h2 class="gate-title">Enter our special date 💖</h2>
+      <p class="gate-sub">Hint: DDMM (the day it all began)</p>
+      <input id="pwd" maxlength="4" placeholder="Hmmm..." class="gate-input" />
+      <button id="unlock" class="gate-btn">Unlock Our Story</button>
+    </div>
+  </div>
+
+  <!-- ================= MAIN SITE ================= -->
+  <main id="site" class="hidden">
+
+    <!-- 🌸 HERO SECTION -->
+    <section class="hero">
+      <video class="hero-bg" autoplay muted loop playsinline src="./videos/hero.mp4"></video>
+      <div class="hero-overlay">
+        <h1 class="title">Happy 2 Years, Monica ❤️ Chandler</h1>
+        <p id="typing" class="tagline">Two years, countless memories, and one love story that keeps getting
+          better…</p>
+        <button id="startBtn" class="btn-primary">Start the Journey</button>
+      </div>
+    </section>
+
+    <!-- 💞 JOURNEY SECTION -->
+    <section id="journey" class="journey hidden">
+      <div id="memoryText" class="memory-text">Let’s take a walk down memory lane…</div>
+      <video id="journeyVideo" class="journey-video" src="./videos/journey.mp4" controls playsinline></video>
+
+      <div id="afterVideo" class="after-video hidden">
+        <p>Now scroll to open your letters 💌</p>
+      </div>
+    </section>
+
+    <!-- 💌 LETTERS SECTION -->
+    <section id="letters" class="letters" data-aos="fade-up">
+      <h2 class="section-title">Letters from Every 23rd</h2>
+      <p class="section-sub">Every month, a little piece of our heart on paper</p>
+      <div class="letters-grid" id="lettersGrid"></div>
+    </section>
+
+    <!-- 🖼️ GALLERY LINK SECTION -->
+    <section id="gallery" class="gallery" data-aos="fade-up">
+      <h2 class="section-title">Our Moments</h2>
+      <p class="section-sub">Some special memories captured just for us...</p>
+
+      <div style="margin-top: 20px;">
+        <a href="gallery.html" class="btn-primary" style="text-decoration: none; display: inline-block;">
+          Watch Our Journey ❤️
+        </a>
+      </div>
+    </section>
+
+    <!-- 🎵 PLAYLIST SECTION -->
+    <section id="playlist" class="playlist" data-aos="fade-up">
+      <h2>When words fell short, music spoke for us</h2>
+
+      <div class="spotify-embed">
+        <iframe data-testid="embed-iframe" style="border-radius:12px"
+          src="https://open.spotify.com/embed/playlist/1oqrKUVV0qUMM3ytRqmnWT?utm_source=generator" width="100%"
+          height="352" frameborder="0" allowfullscreen=""
+          allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy">
+        </iframe>
+      </div>
+    </section>
+
+
+    <!-- 🌅 ENDING -->
+    <section id="ending" class="ending" data-aos="fade-up">
+      <video class="end-bg" autoplay muted loop playsinline src="./videos/end-loop.mp4"></video>
+      <div class="end-overlay">
+        <h3>Two years down, forever to go ❤️</h3>
+        <p>— Aakash x Rachita</p>
+        <button id="playFinal" class="btn-primary">Play My Message</button>
+        <audio id="finalAudio" src="./music/final-message.mp3"></audio>
+      </div>
+    </section>
+
+    <audio id="bgMusic" loop src="./music/bg.mp3"></audio>
+
+  </main>
+
+  <!-- LETTER MODAL -->
+  <div id="letterModal" class="modal">
+    <span class="close">&times;</span>
+    <div class="modal-content" id="letterInner"></div>
+  </div>
+
+  <script src="letters.js"></script>
+  <script src="script.js"></script>
+  <!-- Floating hearts canvas -->
+
+  <script>
+    AOS.init({ duration: 1000, once: true });
+  </script>
+  <canvas id="heartsCanvas"></canvas>
+</body>
+
+</html>

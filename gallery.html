@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Moments | Anniversary</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Great+Vibes&family=Poppins:wght@300;400;600&display=swap"
+        rel="stylesheet">
+    <style>
+        body {
+            background-color: #fff0f6;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        .gallery-container {
+            flex: 1;
+            padding: 40px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .back-btn {
+            display: inline-block;
+            margin-bottom: 30px;
+            text-decoration: none;
+            color: #d63384;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            border: 2px solid #ff99bb;
+            padding: 10px 25px;
+            border-radius: 30px;
+            transition: all 0.3s ease;
+        }
+
+        .back-btn:hover {
+            background: #ff99bb;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="gallery-container">
+        <a href="index.html" class="back-btn">← Back to Home</a>
+
+        <h2 class="section-title" data-aos="fade-down">Our Beautiful Moments</h2>
+        <p class="section-sub" data-aos="fade-up">Capturing our love, one frame at a time.</p>
+
+        <div class="tabs" data-aos="fade-up">
+            <button class="tab-btn active" data-tab="videos">Videos</button>
+            <button class="tab-btn" data-tab="photos">Photos</button>
+        </div>
+
+        <!-- VIDEOS GRID (Default Active) -->
+        <div id="videos" class="tab-panel video-grid">
+            <video src="./videos/moment1.mp4" controls></video>
+            <video src="./videos/moment2.mp4" controls></video>
+        </div>
+
+        <!-- PHOTOS GRID -->
+        <div id="photos" class="tab-panel hidden photo-grid">
+            <img src="./images/photo1.jpg" alt="Memory 1">
+            <img src="./images/photo2.jpg" alt="Memory 2">
+            <img src="./images/photo3.jpg" alt="Memory 3">
+        </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({ duration: 1000, once: true });
+
+        // Simple Tab Logic for Gallery Page
+        const tabs = document.querySelectorAll('.tab-btn');
+        const panels = document.querySelectorAll('.tab-panel');
+
+        tabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                // Remove active class from all tabs
+                tabs.forEach(t => t.classList.remove('active'));
+                // Add active class to clicked tab
+                tab.classList.add('active');
+
+                // Hide all panels
+                panels.forEach(p => {
+                    p.classList.add('hidden');
+                    p.classList.remove('active'); // Ensure active class is removed if used
+                });
+
+                // Show target panel
+                const targetId = tab.dataset.tab;
+                const targetPanel = document.getElementById(targetId);
+                if (targetPanel) {
+                    targetPanel.classList.remove('hidden');
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

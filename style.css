@@ -1,0 +1,574 @@
+/* ==============================================
+   GENERAL STYLE
+   ============================================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: #fff0f6;
+  color: #4a2c2a;
+  overflow-x: hidden;
+}
+
+/* Utility classes */
+.hidden {
+  display: none !important;
+}
+
+section {
+  padding: 80px 10%;
+  text-align: center;
+  position: relative;
+}
+
+.section-title {
+  font-family: 'Dancing Script', cursive;
+  font-size: 2.8rem;
+  color: #d63384;
+  margin-bottom: 10px;
+}
+
+.section-sub {
+  font-size: 1.1rem;
+  color: #775757;
+  margin-bottom: 40px;
+}
+
+.btn-primary,
+.btn-secondary {
+  padding: 12px 26px;
+  border: none;
+  cursor: pointer;
+  font-size: 1rem;
+  border-radius: 40px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.btn-primary {
+  background-color: #ff80aa;
+  color: white;
+  box-shadow: 0 4px 10px rgba(255, 128, 170, 0.5);
+}
+
+.btn-primary:hover {
+  background-color: #ff6699;
+  transform: translateY(-3px);
+}
+
+.btn-secondary {
+  background-color: #fff;
+  border: 2px solid #ff99bb;
+  color: #d63384;
+}
+
+.btn-secondary:hover {
+  background-color: #ffedf4;
+}
+
+/* ==============================================
+   PASSWORD GATE
+   ============================================== */
+.gate {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at top left, #ffe6ef, #ffc2d4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  animation: fadeIn 1s ease;
+}
+
+.gate-content {
+  background: white;
+  padding: 40px 50px;
+  border-radius: 20px;
+  text-align: center;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+}
+
+.gate-title {
+  font-family: 'Great Vibes', cursive;
+  font-size: 2.5rem;
+  color: #d63384;
+  margin-bottom: 10px;
+}
+
+.gate-sub {
+  font-size: 1rem;
+  color: #704848;
+  margin-bottom: 25px;
+}
+
+.gate-input {
+  padding: 10px 20px;
+  font-size: 1.1rem;
+  border-radius: 40px;
+  border: 2px solid #ff99bb;
+  outline: none;
+  width: 150px;
+  text-align: center;
+  color: #d63384;
+}
+
+.gate-btn {
+  margin-top: 15px;
+  background-color: #ff80aa;
+  color: white;
+  border: none;
+  border-radius: 40px;
+  padding: 10px 20px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.gate-btn:hover {
+  background-color: #ff6699;
+}
+
+/* Fade-out effect */
+.fade-out {
+  animation: fadeOut 1.2s forwards;
+}
+
+@keyframes fadeOut {
+  to {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
+/* ==============================================
+   HERO SECTION
+   ============================================== */
+.hero {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  background: rgba(0, 0, 0, 0.4);
+  transition: opacity 1.5s ease;
+}
+
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 1;
+}
+
+.hero-overlay {
+  position: relative;
+  z-index: 3;
+  color: white;
+  text-align: center;
+  padding: 20px;
+}
+
+
+.title {
+  font-family: 'Great Vibes', cursive;
+  font-size: 3.5rem;
+  color: #fff;
+  text-shadow: 0 0 15px rgba(255, 192, 203, 0.8);
+  animation: glow 3s infinite alternate;
+}
+
+@keyframes glow {
+  0% {
+    text-shadow: 0 0 10px #ff99bb, 0 0 20px #ff80aa;
+  }
+
+  100% {
+    text-shadow: 0 0 20px #ffb6c1, 0 0 30px #ff6699;
+  }
+}
+
+.tagline {
+  font-family: 'Dancing Script', cursive;
+  font-size: 1.6rem;
+  margin-top: 15px;
+  color: #ffe6ef;
+  min-height: 50px;
+}
+
+/* ==============================================
+   JOURNEY SECTION
+   ============================================== */
+.journey {
+  background: #fff5f8;
+}
+
+.memory-text {
+  font-family: 'Dancing Script', cursive;
+  font-size: 2rem;
+  color: #d63384;
+  margin-bottom: 25px;
+  animation: fadeIn 1s ease;
+}
+
+.journey-video {
+  width: 90%;
+  max-width: 800px;
+  border-radius: 20px;
+  box-shadow: 0 10px 40px rgba(255, 128, 170, 0.3);
+}
+
+.after-video p {
+  font-size: 1.3rem;
+  color: #844d4d;
+  margin-top: 30px;
+  font-family: 'Dancing Script', cursive;
+}
+
+/* ==============================================
+   LETTERS SECTION
+   ============================================== */
+.letters-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 30px;
+  margin-top: 40px;
+}
+
+.letter-card {
+  cursor: pointer;
+  transition: transform 0.4s ease;
+}
+
+.letter-card:hover {
+  transform: translateY(-10px);
+}
+
+.polaroid {
+  background: white;
+  border-radius: 10px;
+  padding: 8px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Floating effect for polaroids */
+.float {
+  animation: floatAnim 6s ease-in-out infinite;
+}
+
+@keyframes floatAnim {
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+/* ==============================================
+   GALLERY SECTION
+   ============================================== */
+.tabs {
+  margin-bottom: 25px;
+}
+
+.tab-btn {
+  padding: 10px 20px;
+  border: 2px solid #ff99bb;
+  border-radius: 30px;
+  background: none;
+  cursor: pointer;
+  color: #d63384;
+  margin: 0 5px;
+  transition: all 0.3s;
+}
+
+.tab-btn.active,
+.tab-btn:hover {
+  background: #ff99bb;
+  color: white;
+}
+
+.photo-grid,
+.video-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+}
+
+.photo-grid img,
+.video-grid video {
+  width: 100%;
+  border-radius: 15px;
+  box-shadow: 0 5px 20px rgba(255, 128, 170, 0.3);
+  transition: transform 0.3s ease;
+}
+
+.photo-grid img:hover {
+  transform: scale(1.03);
+}
+
+/* ==============================================
+   PLAYLIST
+   ============================================== */
+.playlist {
+  background-color: #fff0f6;
+}
+
+.music-player {
+  margin-top: 25px;
+}
+
+/* ==============================================
+   ENDING SECTION
+   ============================================== */
+.ending {
+  position: relative;
+  color: white;
+  text-align: center;
+}
+
+.end-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(60%);
+  z-index: -1;
+}
+
+.end-overlay {
+  position: relative;
+  padding: 100px 20px;
+}
+
+.end-overlay h3 {
+  font-family: 'Great Vibes', cursive;
+  font-size: 2.5rem;
+}
+
+.end-overlay p {
+  font-size: 1.3rem;
+  margin-bottom: 25px;
+}
+
+/* ==============================================
+   ANIMATIONS
+   ============================================== */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Floating hearts canvas */
+/* Floating hearts canvas */
+#heartsCanvas {
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  opacity: 0.4;
+  mix-blend-mode: lighten;
+  filter: blur(0.3px);
+}
+
+
+.hero,
+.ending {
+  position: relative;
+  z-index: 2;
+}
+
+/* Soft glowing text (hero headline + tagline) */
+@keyframes romanticGlow {
+  0% {
+    text-shadow: 0 0 8px rgba(255, 180, 200, 0.3), 0 0 12px rgba(255, 130, 170, 0.2);
+  }
+
+  50% {
+    text-shadow: 0 0 18px rgba(255, 160, 200, 0.6), 0 0 24px rgba(255, 90, 160, 0.5);
+  }
+
+  100% {
+    text-shadow: 0 0 8px rgba(255, 180, 200, 0.3), 0 0 12px rgba(255, 130, 170, 0.2);
+  }
+}
+
+.hero .title,
+.hero .tagline {
+  animation: romanticGlow 4s ease-in-out infinite;
+  color: #fff;
+  text-align: center;
+}
+
+.hero .title {
+  font-family: 'Dancing Script', cursive;
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  letter-spacing: 1px;
+}
+
+.hero .tagline {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.2rem;
+  font-weight: 400;
+  opacity: 0.9;
+}
+
+/* Glowing "Start the Journey" button */
+@keyframes heartbeatGlow {
+
+  0%,
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 10px rgba(255, 160, 190, 0.5), 0 0 20px rgba(255, 110, 150, 0.3);
+  }
+
+  50% {
+    transform: scale(1.05);
+    box-shadow: 0 0 18px rgba(255, 150, 180, 0.8), 0 0 30px rgba(255, 100, 160, 0.6);
+  }
+}
+
+.hero-cta button {
+  background: linear-gradient(135deg, #ff99b9, #ff6f91);
+  border: none;
+  color: white;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.1rem;
+  font-weight: 600;
+  padding: 14px 36px;
+  border-radius: 50px;
+  cursor: pointer;
+  letter-spacing: 0.5px;
+  transition: all 0.3s ease;
+  animation: heartbeatGlow 3s ease-in-out infinite;
+}
+
+.hero-cta button:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 25px rgba(255, 120, 160, 0.8);
+}
+
+/* ==============================================
+   LETTER MODAL (POPUP)
+   ============================================== */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10000;
+  backdrop-filter: blur(5px);
+
+  /* Hidden state for animation */
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.4s ease, visibility 0.4s ease;
+}
+
+.modal.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.modal-content {
+  background: #fff;
+  width: 90%;
+  max-width: 500px;
+  /* Small popup */
+  max-height: 80vh;
+  overflow-y: auto;
+  border-radius: 20px;
+  padding: 30px;
+  position: relative;
+  box-shadow: 0 15px 50px rgba(0, 0, 0, 0.3);
+  border: 4px solid #ff99bb;
+
+  /* Animation for the content */
+  transform: scale(0.8) translateY(20px);
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.modal.active .modal-content {
+  transform: scale(1) translateY(0);
+}
+
+.close {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  font-size: 2.5rem;
+  color: #d63384;
+  cursor: pointer;
+  z-index: 10;
+  line-height: 0.8;
+  transition: transform 0.2s;
+}
+
+.close:hover {
+  transform: scale(1.2) rotate(90deg);
+}
+
+/* Thumbnail and Text Layout */
+.letter-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+  border-bottom: 2px dashed #ffc2d4;
+  padding-bottom: 15px;
+}
+
+.letter-thumbnail {
+  width: 70px;
+  height: 70px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 3px solid #ff99bb;
+  margin-right: 15px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.letter-title {
+  font-family: 'Great Vibes', cursive;
+  font-size: 2rem;
+  color: #d63384;
+}
+
+.letter-body {
+  font-family: 'Dancing Script', cursive;
+  font-size: 1.3rem;
+  line-height: 1.6;
+  color: #553333;
+  text-align: left;
+  white-space: pre-wrap;
+}
