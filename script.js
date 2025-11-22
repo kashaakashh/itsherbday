@@ -50,7 +50,7 @@ document.addEventListener("DOMContentLoaded", () => {
   if (tagEl) typeText(tagEl, tagEl.textContent, 30);
 
   // ====== START JOURNEY ======
-  if (startBtn && journey && journeyVideo) {
+  if (startBtn && journey) {
     startBtn.addEventListener("click", () => {
       runConfetti();
       const hero = document.querySelector(".hero");
@@ -63,15 +63,11 @@ document.addEventListener("DOMContentLoaded", () => {
           memoryText.classList.add("hidden");
           setTimeout(() => {
             if (bgMusic) bgMusic.pause();
-            journeyVideo.play().catch(() => { });
+            // For iframe, we can't auto-play via JS easily without API, 
+            // but the 'allow=autoplay' attribute helps.
           }, 1000);
         }, 2000);
       }
-    });
-
-    journeyVideo.addEventListener("ended", () => {
-      if (afterVideo) afterVideo.style.display = "block";
-      if (bgMusic) bgMusic.play().catch(() => { });
     });
   }
 
@@ -91,14 +87,11 @@ document.addEventListener("DOMContentLoaded", () => {
         lettersGrid.appendChild(card);
       }
 
-      lettersGrid.addEventListener("click", (e) => {
-        const card = e.target.closest(".letter-card");
-        if (!card) return;
-        const idx = card.dataset.idx;
-
+      // Helper function to open letter
+      function openLetter(idx) {
+        idx = parseInt(idx);
         if (!letterInner || !letterModal) return;
 
-        // New HTML structure for the popup
         let contentHtml = `
           <div class="letter-header">
             <img src="./letters/${idx}.jpg" class="letter-thumbnail" onerror="this.style.display='none'">
@@ -114,11 +107,43 @@ document.addEventListener("DOMContentLoaded", () => {
         }
 
         contentHtml += `</div>`;
-        letterInner.innerHTML = contentHtml;
 
-        // Trigger animation
+        // Add Navigation Buttons
+        contentHtml += `
+          <div class="letter-nav">
+            <button class="letter-nav-btn" id="prevLetter" ${idx <= 1 ? 'disabled' : ''}>
+              ← Previous
+            </button>
+            <button class="letter-nav-btn" id="nextLetter" ${idx >= 24 ? 'disabled' : ''}>
+              Next →
+            </button>
+          </div>
+        `;
+
+        letterInner.innerHTML = contentHtml;
         letterModal.classList.add("active");
 
+        // Add Event Listeners for Nav
+        setTimeout(() => {
+          document.getElementById('prevLetter')?.addEventListener('click', (e) => {
+            e.stopPropagation();
+            if (idx > 1) openLetter(idx - 1);
+          });
+          document.getElementById('nextLetter')?.addEventListener('click', (e) => {
+            e.stopPropagation();
+            if (idx < 24) openLetter(idx + 1);
+          });
+        }, 0);
+
+        // Trigger Confetti
+        if (typeof runConfetti === 'function') runConfetti();
+      }
+
+      lettersGrid.addEventListener("click", (e) => {
+        const card = e.target.closest(".letter-card");
+        if (!card) return;
+        const idx = card.dataset.idx;
+        openLetter(idx);
       });
     } catch (err) {
       console.error("Letters section issue:", err);
@@ -140,18 +165,30 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // ====== MUTE TOGGLE ======
-  if (muteToggle && bgMusic) {
-    muteToggle.addEventListener("click", () => {
+  // ====== MUSIC CONTROLS ======
+  const playPauseBtn = document.getElementById('playPauseBtn');
+  const volumeSlider = document.getElementById('volumeSlider');
+
+  if (playPauseBtn && bgMusic) {
+    playPauseBtn.addEventListener('click', () => {
       if (bgMusic.paused) {
-        bgMusic.play();
-        muteToggle.textContent = "Mute";
+        bgMusic.play().catch(e => console.log("Audio play failed:", e));
+        playPauseBtn.textContent = '⏸️';
       } else {
         bgMusic.pause();
-        muteToggle.textContent = "Unmute";
+        playPauseBtn.textContent = '▶️';
       }
     });
   }
+
+  if (volumeSlider && bgMusic) {
+    volumeSlider.addEventListener('input', (e) => {
+      const vol = e.target.value / 100;
+      bgMusic.volume = vol;
+      volumeSlider.style.setProperty('--volume', e.target.value + '%');
+    });
+  }
+
   // ====== HEART ANIMATION ======
   try {
     const canvas = document.getElementById('heartsCanvas');
