@@ -41,13 +41,16 @@
       </div>
     </section>
 
-    <!-- 💞 JOURNEY SECTION -->
+    <!-- � JOURNEY SECTION -->
     <section id="journey" class="journey hidden">
       <div id="memoryText" class="memory-text">Let’s take a walk down memory lane…</div>
-      <video id="journeyVideo" class="journey-video" src="./videos/journey.mp4" controls playsinline></video>
+      <div class="video-container">
+        <iframe src="https://drive.google.com/file/d/1nxFT_pp1drXBJrTYmvmZNozWoIsMjZlF/preview" width="640" height="480"
+          allow="autoplay" style="border:none; overflow:hidden;"></iframe>
+      </div>
 
       <div id="afterVideo" class="after-video hidden">
-        <p>Now scroll to open your letters 💌</p>
+        <p>Now scroll to open your letters �💌</p>
       </div>
     </section>
 
@@ -98,6 +101,12 @@
     <audio id="bgMusic" loop src="./music/bg.mp3"></audio>
 
   </main>
+
+  <!-- MUSIC CONTROLS -->
+  <div class="music-controls">
+    <button class="music-btn" id="playPauseBtn" title="Play/Pause">▶️</button>
+    <input type="range" class="volume-slider" id="volumeSlider" min="0" max="100" value="20" style="--volume: 20%">
+  </div>
 
   <!-- LETTER MODAL -->
   <div id="letterModal" class="modal">
