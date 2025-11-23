@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Happy 2 Years, Monica ❤️ Chandler</title>
   <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="counter.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link
     href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Dancing+Script:wght@600&family=Poppins:wght@400;600&display=swap"
@@ -41,16 +42,47 @@
       </div>
     </section>
 
-    <!-- � JOURNEY SECTION -->
+    <!-- ⏰ TIME TOGETHER COUNTER -->
+    <section class="time-counter" data-aos="fade-up">
+      <h2 class="section-title">Our Time Together</h2>
+      <div class="counter-display">
+        <div class="counter-item">
+          <span class="counter-value" id="years">0</span>
+          <span class="counter-label">Years</span>
+        </div>
+        <div class="counter-item">
+          <span class="counter-value" id="months">0</span>
+          <span class="counter-label">Months</span>
+        </div>
+        <div class="counter-item">
+          <span class="counter-value" id="days">0</span>
+          <span class="counter-label">Days</span>
+        </div>
+        <div class="counter-item">
+          <span class="counter-value" id="hours">0</span>
+          <span class="counter-label">Hours</span>
+        </div>
+        <div class="counter-item">
+          <span class="counter-value" id="minutes">0</span>
+          <span class="counter-label">Minutes</span>
+        </div>
+        <div class="counter-item">
+          <span class="counter-value" id="seconds">0</span>
+          <span class="counter-label">Seconds</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- 🎬 JOURNEY SECTION -->
     <section id="journey" class="journey hidden">
-      <div id="memoryText" class="memory-text">Let’s take a walk down memory lane…</div>
+      <div id="memoryText" class="memory-text">Let's take a walk down memory lane…</div>
       <div class="video-container">
         <iframe src="https://drive.google.com/file/d/1nxFT_pp1drXBJrTYmvmZNozWoIsMjZlF/preview" width="640" height="480"
-          allow="autoplay" style="border:none; overflow:hidden;"></iframe>
+          allow="autoplay" style="border:none; overflow:hidden;" loading="lazy"></iframe>
       </div>
 
       <div id="afterVideo" class="after-video hidden">
-        <p>Now scroll to open your letters �💌</p>
+        <p>Now scroll to open your letters 💌</p>
       </div>
     </section>
 
@@ -120,6 +152,47 @@
 
   <script>
     AOS.init({ duration: 1000, once: true });
+
+    // Time Together Counter
+    const startDate = new Date('2023-12-23T00:00:00'); // Replace with your actual anniversary date
+
+    function updateCounter() {
+      const now = new Date();
+      const diff = now - startDate;
+
+      // Calculate time units
+      const seconds = Math.floor(diff / 1000);
+      const minutes = Math.floor(seconds / 60);
+      const hours = Math.floor(minutes / 60);
+      const days = Math.floor(hours / 24);
+
+      // Calculate years and months
+      let years = now.getFullYear() - startDate.getFullYear();
+      let months = now.getMonth() - startDate.getMonth();
+
+      if (months < 0) {
+        years--;
+        months += 12;
+      }
+
+      // Calculate remaining days
+      const tempDate = new Date(startDate);
+      tempDate.setFullYear(startDate.getFullYear() + years);
+      tempDate.setMonth(startDate.getMonth() + months);
+      const remainingDays = Math.floor((now - tempDate) / (1000 * 60 * 60 * 24));
+
+      // Update display
+      document.getElementById('years').textContent = years;
+      document.getElementById('months').textContent = months;
+      document.getElementById('days').textContent = remainingDays;
+      document.getElementById('hours').textContent = now.getHours().toString().padStart(2, '0');
+      document.getElementById('minutes').textContent = now.getMinutes().toString().padStart(2, '0');
+      document.getElementById('seconds').textContent = now.getSeconds().toString().padStart(2, '0');
+    }
+
+    // Update counter every second
+    setInterval(updateCounter, 1000);
+    updateCounter(); // Initial call
   </script>
   <canvas id="heartsCanvas"></canvas>
 </body>

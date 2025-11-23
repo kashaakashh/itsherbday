@@ -1,0 +1,71 @@
+/* ==============================================
+   TIME TOGETHER COUNTER
+   ============================================== */
+.time-counter {
+    background: linear-gradient(135deg, #fff5f8 0%, #ffe6ef 100%);
+    padding: 60px 10%;
+    text-align: center;
+}
+
+.counter-display {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+    margin-top: 40px;
+}
+
+.counter-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 100px;
+    padding: 20px;
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 5px 20px rgba(255, 128, 170, 0.2);
+    border: 2px solid #ff99bb;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.counter-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(255, 102, 153, 0.3);
+}
+
+.counter-value {
+    font-family: 'Dancing Script', cursive;
+    font-size: 3rem;
+    font-weight: 700;
+    color: #d63384;
+    line-height: 1;
+    margin-bottom: 10px;
+}
+
+.counter-label {
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.9rem;
+    color: #775757;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+    .counter-display {
+        gap: 15px;
+    }
+
+    .counter-item {
+        min-width: 80px;
+        padding: 15px;
+    }
+
+    .counter-value {
+        font-size: 2rem;
+    }
+
+    .counter-label {
+        font-size: 0.75rem;
+    }
+}
